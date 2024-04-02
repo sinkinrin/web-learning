@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>js-learning</title>
+</head>
+<script>
+    function changeContentAndImage() {
+        // 改变段落的内容
+        document.getElementById("innerHTML").innerHTML = "这是修改内容";
+        // 改变段落的样式
+        document.getElementById("style").style.color = "red";
+        // 改变图像的来源
+        document.getElementById("myImage").src = "2.gif";
+        // 切换元素的显示和隐藏
+        var x = document.getElementById("display");//定义一个变量x来储存display的状态，通过document.getelementbyid("id")获取元素
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+
+        var y = document.getElementById("visibility");
+        if (y.style.visibility === "visible"){
+            y.style.visibility = "hidden";
+        } else {
+            y.style.visibility = "visible";
+        }
+    }
+</script>
+
+<body>
+    <p>js通过读取html的id，改变html的内容，样式。</p>
+
+    <p id="innerHTML">onclick点击，document.getelementbyid("id").innerHTML("新内容") </p>
+
+    <p id="style">onclick点击，document.getelementbyid("id").style.color="red" </p>
+
+    <p>js改变了图像的属性值，例如改变路径src。但是这里没有图</p>
+
+    <img id="myImage" border="0" src="/i/eg_bulboff.gif" style="text-align:center;">
+
+    <p id="visibility">js通过改变visibility属性，实现元素的显示和不显示，不显示后布局不会改变</p>
+    <p id="display">js通过改变display属性，实现元素的显示和不显示，但是不显示后布局会改变，通过visibility实现只是不可见</p>
+
+    <button type="button" onclick='changeContentAndImage()'>改变</button>
+
+    <p>接下来是外置脚本演示</p>
+    <p>打开控制台，查看console.log的输出</p>
+    <p>一个网上的live2d的小插件，没用，除了好玩</p>
+    <script src="external.js"></script>
+    <script src="./live2d-widget-master/autoload.js"></script>
+</body>
+</html>
