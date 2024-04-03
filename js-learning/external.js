@@ -1,21 +1,96 @@
-console.log('控制台打印');
-console.log('通过 let 定义的变量不会被提升到顶部，而是在定义的位置初始化。变量从块的开头一直处于“暂时死区”，直到声明为止：');
-console.log('var来声明变量，let和const来声明变量，let和const的区别是let声明的变量可以修改，const声明的变量不可以修改，' +
-    'const声明的变量必须初始化，不然会报错，const声明的变量不可以修改，但是可以修改对象的属性，因为对象的属性是引用类型，const只是保证引用地址不变，但是引用地址指向的对象的属性是可以修改的。' +
-    'var和let的区别是var声明的变量可以提升，let声明的变量不可以提升，var声明的变量可以重复声明，let声明的变量不可以重复声明。');
-console.log('const声明的对象不可以修改，但是可以修改对象的属性，因为对象的属性是引用类型，const只是保证引用地址不变，但是引用地址指向的对象的属性是可以修改的。');
-let object={
-    name: "John", age: 30, city: "New York",
-    name111 : function() {
+class Person {
+    constructor(name, age, city) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
+    }
+
+    getName() {
         return this.name;
     }
-};
-console.log("this is" + " " + object.name111());
-console.log(object.name + "'s age is " + object.age);     // John's age is 30
-console.log(object.name + "'s city is " + object.city);         // John's city is New York
-object.age = 40;
-object.city = "Chicago";
-console.log(object.name + "'s age is " + object.age);     // John's age is 40
-console.log(object.name + "'s city is " + object.city);// John's city is Chicago
+
+    getAge() {
+        return this.age;
+    }
+
+    getCity() {
+        return this.city;
+    }
+
+    setAge(newAge) {
+        this.age = newAge;
+    }
+
+    setCity(newCity) {
+        this.city = newCity;
+    }
+}
+let person = new Person("John", 30, "New York");//let定义的对象不可修改，但对象的属性可以修改
+console.log("This is " + person.getName());
+console.log(person.getName() + "'s age is " + person.getAge());
+console.log(person.getName() + "'s city is " + person.getCity());
+
+person.setAge(40);
+person.setCity("Chicago");
+console.log(person.getName() + "'s age is " + person.getAge());
+console.log(person.getName() + "'s city is " + person.getCity());
+
+
+class StringOperations {
+    constructor(str) {
+        this.str = str;
+    }
+
+    toUpperCase() {
+        return this.str.toUpperCase();
+    }
+
+    toLowerCase() {
+        return this.str.toLowerCase();
+    }
+
+    getLength() {
+        return this.str.length;
+    }
+
+    startsWith(substring) {
+        return this.str.startsWith(substring);
+    }
+
+    endsWith(substring) {
+        return this.str.endsWith(substring);
+    }
+
+    indexOf(substring) {
+        return this.str.indexOf(substring);
+    }
+
+    replace(oldValue, newValue) {
+        return this.str.replace(oldValue, newValue);
+    }
+
+    split(separator) {
+        return this.str.split(separator);
+    }
+
+    trim() {
+        return this.str.trim();
+    }
+}
+
+let str = "Hello, World!";
+let stringOps = new StringOperations(str);
+
+console.log(stringOps.toUpperCase()); // 大写
+console.log(stringOps.toLowerCase()); // 小写
+console.log(stringOps.getLength()); // 字符串的长度，Output: 13
+console.log(stringOps.startsWith("Hello")); // 判断字符串是否以指定字符串开头，Output: true
+console.log(stringOps.endsWith("World!")); // 判断字符串是否以指定字符串结尾，Output: true
+console.log(stringOps.indexOf("World")); // 字符串首次出现的位置，Output: 7
+console.log(stringOps.replace("World", "Universe")); // 替换字符串，Output: Hello, Universe!
+console.log(stringOps.split(",")); // 分割字符串为数组，Output: ["Hello", " World!"]
+console.log(stringOps.trim()); // 删除字符串两端的空格，Output: Hello, World!
+
+
 
 
