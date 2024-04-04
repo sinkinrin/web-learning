@@ -1,3 +1,4 @@
+
 class Person {
     constructor(name, age, city) {
         this.name = name;
@@ -127,3 +128,224 @@ console.log(number_met.toFixed(2));
 console.log(number_met.toPrecision(2));
 console.log(number_met.valueOf());
 console.log(number_met.toExponential(2));
+//2024-4-4
+class ArrayOperations {
+    constructor(array) {
+        this.array = array;
+    }
+
+    getLength() {
+        return this.array.length;
+    }
+
+    getElement(index) {
+        return this.array[index];
+    }
+
+    setElement(index, value) {
+        this.array[index] = value;
+    }
+
+    pushElement(value) {
+        this.array.push(value);
+    }
+
+    popElement() {
+        return this.array.pop();
+    }
+
+    shiftElement() {
+        return this.array.shift();
+    }
+
+    unshiftElement(value) {
+        this.array.unshift(value);
+    }
+
+    sliceArray(start, end) {
+        return this.array.slice(start, end);
+    }
+
+    joinArray(separator) {
+        return this.array.join(separator);
+    }
+
+    reverseArray() {
+        return this.array.reverse();
+    }
+
+    sortArray() {
+        return this.array.sort();
+    }
+    getmax(){
+        return Math.max.apply(null,this.array);
+    }
+    Getmax(){
+       var max=this.array[0];
+         for(var i=1;i<this.array.length;i++){
+              if(this.array[i]>max){
+                max=this.array[i];
+              }
+         
+        }
+    return max;}
+}
+
+let arr = [1, 2, 3, 4, 5];
+let arrayOps = new ArrayOperations(arr);
+
+console.log(arrayOps.getLength()); // Output: 5
+console.log(arrayOps.getElement(2)); // Output: 3
+
+arrayOps.setElement(2, 10);
+console.log(arrayOps.getElement(2)); // Output: 10
+
+arrayOps.pushElement(6);
+console.log(arrayOps.getLength()); // Output: 6
+
+console.log(arrayOps.popElement()); // Output: 6
+console.log(arrayOps.getLength()); // Output: 5
+
+console.log(arrayOps.shiftElement()); // Output: 1
+console.log(arrayOps.getLength()); // Output: 4
+
+arrayOps.unshiftElement(0);
+console.log(arrayOps.getLength()); // Output: 5
+
+console.log(arrayOps.sliceArray(1, 4)); // Output: [2, 10, 4]
+console.log(arrayOps.joinArray("-")); // Output: 0-2-10-4-5
+
+console.log(arrayOps.reverseArray()); // Output: [5, 4, 10, 2, 0]
+console.log(arrayOps.sortArray()); // Output: [0, 2, 4, 5, 10]
+console.log(arrayOps.getmax());
+console.log(arrayOps.Getmax());
+
+class time{
+    constructor(){
+        this.date=new Date();
+    }
+    getYear(){
+        return this.date.getFullYear();
+    }
+    getMonth(){
+        return this.date.getMonth();
+    }
+    getDay(){
+        return this.date.getDay();
+    }
+    getHours(){
+        return this.date.getHours();
+    }
+    getMinutes(){
+        return this.date.getMinutes();
+    }
+    getSeconds(){
+        return this.date.getSeconds();
+    }
+    getMilliseconds(){
+        return this.date.getMilliseconds();
+    }
+    getTime(){
+        return this.date.getTime();
+    }
+    setDate(newDate){
+        this.date=newDate;
+    }
+    setTime(newTime){
+        this.date.setTime(newTime);
+    }
+}
+
+class Math {
+    static power(a, b) {
+        return a ** b;
+    }
+
+    static squareRoot(a) {
+        return Math.sqrt(a);
+    }
+
+    static absolute(a) {
+        return Math.abs(a);
+    }
+
+    static round(a) {
+        return Math.round(a);
+    }
+
+    static ceil(a) {
+        return Math.ceil(a);
+    }
+
+    static floor(a) {
+        return Math.floor(a);
+    }
+
+    static random() {
+        return Math.random();
+    }
+}
+
+switch (Math.floor(Math.random() * 5)) {
+    case 0:
+        console.log("0");
+        break;
+    case 1:
+        console.log("1");
+        break;
+    case 2:
+        console.log("2");
+        break;
+    case 3:
+        console.log("3");
+        break;
+    case 4:
+        console.log("4");
+        break;
+    default:
+        console.log("default");
+}
+// For loop
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// While loop
+let j = 0;
+while (j < 5) {
+    console.log(j);
+    j++;
+}
+
+// Do-while loop
+let k = 0;
+do {
+    console.log(k);
+    k++;
+} while (k < 5);
+
+// For-in loop (for iterating over object properties)
+const obj = { a: 1, b: 2, c: 3 };
+for (let prop in obj) {
+    console.log(prop + ": " + obj[prop]);
+}
+
+// For-of loop (for iterating over iterable objects like arrays)
+const arr2 = [1, 2, 3, 4, 5];
+for (let element of arr) {
+    console.log(element);
+}
+//正则表达式 ，太多，要用再找
+try {
+    // 供测试的代码块
+}
+catch(err) {
+    // 处理错误的代码块
+} 
+finally {
+    // 无论结果如何都执行的代码块
+}
+import copilot from './modules.js';//模块导入只适用于http协议，file协议不适用
+for (let key in copilot) {
+    console.log(key + ": " + copilot[key]);
+}
