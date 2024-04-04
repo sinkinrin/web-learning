@@ -2,9 +2,7 @@
 ---
 
 ---
-简单尝试了一下写markdown
-然后配置了一下git，并add commit 和 push
-js看得很快，但写的很慢
+
 # biaoti
 **加粗**
 ```

@@ -345,7 +345,51 @@ catch(err) {
 finally {
     // 无论结果如何都执行的代码块
 }
-import copilot from './modules.js';//模块导入只适用于http协议，file协议不适用
-for (let key in copilot) {
-    console.log(key + ": " + copilot[key]);
+
+//import copilot from './modules.js';//模块导入只适用于http协议，file协议不适用
+// for (let key in copilot) {
+//     console.log(key + ": " + copilot[key]);
+// }
+// let copilot = JSON.stringify(copilot);//对象转换为json形式的字符串
+// console.log(copilot);
+
+// 迭代器代码
+function createIterator(array) {
+    let nextIndex = 0;
+
+    return {
+        next: function() {
+            return nextIndex < array.length ?
+                { value: array[nextIndex++], done: false } :
+                { done: true };
+        }
+    };
 }
+
+const arr3 = [1, 2, 3, 4, 5];
+const iterator = createIterator(arr);
+
+let result = iterator.next();
+while (!result.done) {
+    console.log(result.value);
+    result = iterator.next();
+}
+//set是一组不重复的值，其余与数组类似
+const set = new Set([1, 2, 3, 4, "Hello", "World"]);   
+let setOptions = {
+    add: function(value) {
+        set.add(value);
+    },
+    delete: function(value) {
+        set.delete(value);
+    },
+    has: function(value) {
+        return set.has(value);
+    },
+    clear: function() {
+        set.clear();
+    },
+    size: function() {
+        return set.size;
+    }
+};
