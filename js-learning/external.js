@@ -380,7 +380,7 @@ let setOptions = {
     add: function(value) {
         set.add(value);
     },
-    delete: function(value) {
+        delete: function(value) {
         set.delete(value);
     },
     has: function(value) {
@@ -393,3 +393,69 @@ let setOptions = {
         return set.size;
     }
 };
+class DOMOperations {
+    constructor(selector) {
+        this.element = document.querySelector(selector);
+    }
+
+    getElement() {
+        return this.element;
+    }
+
+    setTextContent(text) {
+        this.element.textContent = text;
+    }
+
+    setHTMLContent(html) {
+        this.element.innerHTML = html;
+    }
+
+    addClass(className) {
+        this.element.classList.add(className);
+    }
+
+    removeClass(className) {
+        this.element.classList.remove(className);
+    }
+
+    toggleClass(className) {
+        this.element.classList.toggle(className);
+    }
+
+    setAttribute(attribute, value) {
+        this.element.setAttribute(attribute, value);
+    }
+
+    removeAttribute(attribute) {
+        this.element.removeAttribute(attribute);
+    }
+
+    addEventListener(event, callback) {
+        this.element.addEventListener(event, callback);
+    }
+
+    removeEventListener(event, callback) {
+        this.element.removeEventListener(event, callback);
+    }
+}
+
+// Example usage
+let element = new DOMOperations("#myElement");
+
+element.setTextContent("Hello, World!");
+element.addClass("highlight");
+element.addEventListener("click", handleClick);
+element.removeEventListener("click", handleClick);
+
+
+function handleClick() {
+    element.toggleClass("highlight");
+}
+ function checkcookies  () {   
+    if (navigator.cookieEnabled) {
+        window.alert('Cookies are enabled in your browser.');
+    } else {
+        window.alert('Cookies are disabled in your browser.');
+    }
+    
+}
