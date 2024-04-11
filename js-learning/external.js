@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 
 class Person {
     constructor(name, age, city) {
@@ -442,20 +445,271 @@ class DOMOperations {
 // Example usage
 let element = new DOMOperations("#myElement");
 
-element.setTextContent("Hello, World!");
-element.addClass("highlight");
-element.addEventListener("click", handleClick);
-element.removeEventListener("click", handleClick);
-
+element.setTextContent("Hello, World!"); // 设置元素的文本内容
+element.addClass("highlight"); // 添加类名
+element.addEventListener("click", handleClick); // 添加点击事件监听器
+element.removeEventListener("click", handleClick); // 移除点击事件监听器
 
 function handleClick() {
-    element.toggleClass("highlight");
+    element.toggleClass("highlight"); // 切换类名
 }
- function checkcookies  () {   
-    if (navigator.cookieEnabled) {
-        window.alert('Cookies are enabled in your browser.');
-    } else {
-        window.alert('Cookies are disabled in your browser.');
+
+function DOMOperations(selector) {
+    this.element = document.querySelector(selector); // 获取DOM元素，css选择器
+
+    this.getElement = function() {
+        return this.element; // 获取DOM元素
     }
-    
+
+    this.setTextContent = function(text) {
+        this.element.textContent = text; // 设置元素的文本内容
+    }
+
+    this.setHTMLContent = function(html) {
+        this.element.innerHTML = html; // 设置元素的HTML内容
+    }
+
+    this.addClass = function(className) {
+        this.element.classList.add(className); // 添加类名
+    }
+
+    this.removeClass = function(className) {
+        this.element.classList.remove(className); // 移除类名
+    }
+
+    this.toggleClass = function(className) {
+        this.element.classList.toggle(className); // 切换类名
+    }
+
+    this.setAttribute = function(attribute, value) {
+        this.element.setAttribute(attribute, value); // 设置元素的属性
+    }
+
+    this.removeAttribute = function(attribute) {
+        this.element.removeAttribute(attribute); // 移除元素的属性
+    }
+
+    this.addEventListener = function(event, callback) {
+        this.element.addEventListener(event, callback); // 添加事件监听器
+    }
+
+    this.removeEventListener = function(event, callback) {
+        this.element.removeEventListener(event, callback); // 移除事件监听器
+    }
 }
+
+
+//JS HTML DOM 集合操作，HTMLCollection对象，NodeList对象
+var myHtmlCollection = document.getElementsByTagName("p");
+console.log(x.length);
+var myNodelist = document.querySelectorAll("P");
+//BOM操作
+//window对象
+
+let xhr = new XMLHttpRequest();
+xhr.open("GET", "https://images.pexels.com/photos/18867922/pexels-photo-18867922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", true);
+xhr.send(null);
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText);
+    }
+};
+//fetch
+fetch("https://images.pexels.com/photos/18867922/pexels-photo-18867922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+    .then(response => response.blob())
+    .then(blob => {
+        console.log(blob);
+    });
+//Promise
+let promise = new Promise((resolve, reject) => {
+    let success = true;
+
+    if (success) {
+        resolve("Promise resolved successfully!");
+    } else {
+        reject("Promise rejected!");
+    }
+});
+class BOMOperations {
+    // 获取浏览器视口的宽度和高度
+    getViewportSize() {
+        return {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+    }
+
+    // 重定向到一个新的 URL
+    redirect(url) {
+        window.location.href = url;
+    }
+
+    // 添加一个新的历史记录项
+    addHistoryState(state, title, url) {
+        window.history.pushState(state, title, url);
+    }
+
+    // 弹出一个警告框
+    alert(message) {
+        window.alert(message);
+    }
+}
+
+// 使用示例
+let bom = new BOMOperations();
+
+console.log(bom.getViewportSize()); // 输出：{width: 1024, height: 768}
+
+bom.redirect('https://www.example.com'); // 重定向到 'https://www.example.com'
+
+bom.addHistoryState({id: 'home'}, 'Home', '/home'); // 添加一个新的历史记录项
+
+bom.alert('Hello, World!'); // 弹出一个警告框，显示 'Hello, World!'
+
+class AjaxOperations {
+    // 构造函数接收一个 URL
+    constructor(url) {
+        this.url = url;
+    }
+
+    // 发送 GET 请求
+    get(callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', this.url, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                callback(null, JSON.parse(xhr.responseText));
+            } else if (xhr.readyState === 4) {
+                callback(xhr.status, null);
+            }
+        };
+        xhr.send();
+    }
+
+    // 发送 POST 请求
+    post(data, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', this.url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                callback(null, JSON.parse(xhr.responseText));
+            } else if (xhr.readyState === 4) {
+                callback(xhr.status, null);
+            }
+        };
+        xhr.send(JSON.stringify(data));
+    }
+}
+
+// 使用示例
+let ajax = new AjaxOperations('https://api.example.com/data');
+
+// 发送 GET 请求
+ajax.get(function(error, data) {
+    if (error) {
+        console.error('Error:', error);
+    } else {
+        console.log('Data:', data);
+    }
+});
+
+// 发送 POST 请求
+ajax.post({id: 1, name: 'Test'}, function(error, data) {
+    if (error) {
+        console.error('Error:', error);
+    } else {
+        console.log('Data:', data);
+    }
+});
+fetch('.json.json')
+    .then(response => response.json())
+    .then(data => {
+        // 现在可以使用  对象了
+        console.log(data);
+        console.log(data.name);
+    });
+
+    // Method 1: Using XMLHttpRequest
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "json.json", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            let data = JSON.parse(xhr.responseText);
+            console.log(data);
+        }
+    };
+    xhr.send();
+
+    // Method 2: Using fetch API
+    fetch("json.json")
+        .then(response => response.json())//response.json()返回一个promise对象,解析为json对象
+        .then(data => {
+            console.log(data);
+                    })
+        .catch(error => {
+            console.error(error);
+        });
+
+    // Method 3: Using jQuery AJAX
+    $.ajax({
+        url: "json.json",
+        dataType: "json",
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(error) {
+            console.error(error);
+        }
+    });
+
+    // Method 4: Using Node.js fs module (server-side)
+
+    const filePath = path.join(__dirname, "json.json");
+    fs.readFile(filePath, "utf8", (error, data) => {
+        if (error) {
+            console.error(error);
+        } else {
+            const jsonData = JSON.parse(data);
+            console.log(jsonData);
+        }
+    });
+
+    const newObj = { name: "John", age: 30, city: "New York" };
+
+
+//将对象转换为JSON字符串，然后写入文件
+    const jsonStr = JSON.stringify(newObj);
+
+    fs.writeFile("json.json", jsonStr, "utf8", (error) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("JSON object written to json.json file");
+        }
+    });
+    // 创建一个用户可输入的对象
+    let userInput = {
+        name: "",
+        age: 0,
+        city: ""
+    };
+
+    // 获取用户输入
+    userInput.name = prompt("Enter your name:");
+    userInput.age = parseInt(prompt("Enter your age:"));
+    userInput.city = prompt("Enter your city:");
+
+    // 将对象转换为JSON字符串
+    const jsonStr1 = JSON.stringify(userInput);
+
+    // 将JSON字符串写入文件
+    fs.writeFile("json.json", jsonStr, "utf8", (error) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("User input saved to json.json file.");
+        }
+    });
+
+      
